@@ -15,8 +15,8 @@ Generate protobuf:
 
 Frontend:
 - npm packages needed for frontEnd:
-    "google-protobuf": "^3.11.3",
-    "grpc-web": "^1.0.7"
+    - "google-protobuf": "^3.11.3",
+    - "grpc-web": "^1.0.7"
     
 - cd frontend
 - npm install
