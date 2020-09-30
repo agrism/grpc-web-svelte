@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto;
+option go_package = ".;proto";
+
+service CategoryService {
+  rpc Index(IndexRequest) returns (Categories) {}
+}
+
+message Categories {
+  string id = 1;
+  string name = 2;
+}
+
+message IndexRequest {}
+
