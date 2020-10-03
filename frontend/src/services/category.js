@@ -5,14 +5,15 @@ export default class{
         this.client = new deps.proto.CategoryClient('http://localhost:9002', null, null)
     }
 
-    async index (){
+    index (){
         const req = new this.proto.IndexRequest()
-        const res = await this.client.index(req, {})
-        return res.getCategoriesList().map(category=>{
-            return {
-                id: category.getId(),
-                name: category.getName(),
-            }
-        });
+        return this.client.index(req, {}).then(res=>{
+            return res.getCategoriesList().map(category=>{
+                return {
+                    id: category.getId(),
+                    name: category.getName(),
+                }
+            });
+        })
     }
 }
