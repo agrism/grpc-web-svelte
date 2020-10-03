@@ -5,6 +5,7 @@
 	import Cat from './services/category' 
 	export let name;
 	let cats = [];
+	let catsJson = [];
 
 
 	async function myCall(){
@@ -24,7 +25,6 @@
 			}
 		}
 
-
 		let cat = new Cat(deps)
 		return await cat.index()
 	}
@@ -36,15 +36,45 @@
 			console.log('error', error);
 		})
 	}
+
+	function getCategoriesJson(){
+		fetch('http://localhost:9003')
+		.then(response => response.json())
+		.then(data => catsJson=data)
+		.catch(error=>{
+			console.log('error', error)
+		})
+	}
+
+	function getMethods(obj)
+	{
+		var res = [];
+		for(var m in obj) {
+			if(typeof obj[m] == "function") {
+				res.push(m)
+			}
+		}
+		return res;
+	}
+
 </script>
 
 <main>
 	<h1>gRPC-web!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<button on:click={getCategories}>Get random cities</button>
+	<button on:click={getCategories}>Get random cities (RPC)</button>
 
 	<ul>
-		{#each cats as cat}
+		{#each cats.slice(0,50) as cat}
+			<li>
+				{cat.id} - {cat.name}
+			</li>
+		{/each}
+	</ul>
+
+	<button on:click={getCategoriesJson}>Get random cities (JSON)</button>
+		<ul>
+		{#each catsJson.slice(0,50) as cat}
 			<li>
 				{cat.id} - {cat.name}
 			</li>

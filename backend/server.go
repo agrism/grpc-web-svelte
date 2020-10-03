@@ -8,7 +8,6 @@ import (
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	"google.golang.org/grpc"
 	"log"
-	"math/rand"
 	"net/http"
 )
 
@@ -25,9 +24,7 @@ func (instance * CategoryServer) Index(ctx context.Context, in *proto.IndexReque
 		Categories: []*proto.Category{},
 	}
 
-	max := rand.Intn(100);
-
-	for i:= 0; i < max; i++ {
+	for i:= 0; i < 1000000; i++ {
 		cat.Categories = append(cat.Categories, &proto.Category{
 			Id: fmt.Sprintf("%v", i),
 			Name: randomdata.City(),
