@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/Pallinder/go-randomdata"
 	"github.com/agrism/grpc-web-svelte/backend/proto"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	"google.golang.org/grpc"
 	"log"
+	"math/rand"
 	"net/http"
 )
 
@@ -17,15 +19,21 @@ type RpcServer struct {
 
 type CategoryServer struct{}
 
-type IndexRequest struct{}
-
 func (instance * CategoryServer) Index(ctx context.Context, in *proto.IndexRequest) (*proto.Categories, error) {
 
-	fmt.Printf("Method index is called")
 	cat := proto.Categories{
-		Id:   "13",
-		Name: "someName olalaa",
+		Categories: []*proto.Category{},
 	}
+
+	max := rand.Intn(100);
+
+	for i:= 0; i < max; i++ {
+		cat.Categories = append(cat.Categories, &proto.Category{
+			Id: fmt.Sprintf("%v", i),
+			Name: randomdata.City(),
+		})
+	}
+
 	return &cat, nil
 }
 

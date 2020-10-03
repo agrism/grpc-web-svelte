@@ -4,6 +4,7 @@
 	import { CategoryServicePromiseClient } from '../proto/categories_grpc_web_pb' 
 	import Cat from './services/category' 
 	export let name;
+	let cats = [];
 
 
 	async function myCall(){
@@ -28,20 +29,29 @@
 		return await cat.index()
 	}
 
-	function doSomething(){
-		myCall().then((r)=>{
-			console.log('success')
-			console.log(r)
+	function getCategories(){
+		myCall().then(response=>{
+			cats = response;
 		}).catch(error=>{
-			console.log('error', error)
+			console.log('error', error);
 		})
 	}
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
+	<h1>gRPC-web!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<button on:click={doSomething}>Button</button>
+	<button on:click={getCategories}>Get random cities</button>
+
+	<ul>
+		{#each cats as cat}
+			<li>
+				{cat.id} - {cat.name}
+			</li>
+		{/each}
+	</ul>
+
+
 </main>
 
 <style>
@@ -57,6 +67,25 @@
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+	}
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-content: flex-start;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		height: 30em;
+	}
+
+	li {
+		/* background: gray; */
+		width: 10em;
+		height: 1.1em;
+		margin: .1em;
+		text-align: left;
 	}
 
 	@media (min-width: 640px) {

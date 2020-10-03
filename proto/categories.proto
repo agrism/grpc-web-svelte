@@ -8,6 +8,10 @@ service CategoryService {
 }
 
 message Categories {
+  repeated Category categories = 1;
+}
+
+message Category {
   string id = 1;
   string name = 2;
 }
