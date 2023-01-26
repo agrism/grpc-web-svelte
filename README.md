@@ -1,4 +1,4 @@
-# gRPC-web *without* `envoy`!
+# [gRPC-web](https://github.com/grpc/grpc-web) *without* `envoy`!
 The goal of this project is to allow for use of google's gRPC-web npm package without also implicitly requiring that one uses `envoy` alongside it.
 by [@agrism](https://github.com/agriam/)!  
 
@@ -8,6 +8,12 @@ by [@agrism](https://github.com/agriam/)!
 _Standalone CLI tools for the most part._
 - `golang` 
 - `node / npm`
+
+> As for your package manager, obviously this all depends on OS.  
+> **for Mac developers**, just use `Homebrew` for everything.  
+> **for Linux devs**, you can easily use `apt` & `npm` together to get all necessary CLI tools and packages.  
+> **for Windows devs**    
+> ...just admit `batch` and `PowerShell` are doo-doo and install WSL2  
 
 # `GETTING STARTED`
 This is the barebones installation process which I went through to configure my application environment correctly. 
