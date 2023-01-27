@@ -4,7 +4,7 @@ by [@agrism](https://github.com/agriam/)!
 
 <sub><i>and `README.md` updated by [@zod](https://github.com/zudsniper/)</i></sub>  
 
-## PREREQUESITES
+## PREREQUISITES
 _Standalone CLI tools for the most part._
 - `golang` 
 - `node / npm`
