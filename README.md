@@ -1,6 +1,6 @@
 # [gRPC-web](https://github.com/grpc/grpc-web) *without* `envoy`!
 The goal of this project is to allow for use of google's gRPC-web npm package without also implicitly requiring that one uses `envoy` alongside it.
-by [@agrism](https://github.com/agriam/)!  
+by [@agrism](https://github.com/agrism/)!  
 
 <sub><i>and `README.md` updated by [@zod](https://github.com/zudsniper/)</i></sub>  
 
