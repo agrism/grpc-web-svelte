@@ -1,19 +1,18 @@
-# [gRPC-web](https://github.com/grpc/grpc-web) *without* `envoy`!
-The goal of this project is to allow for use of google's gRPC-web npm package without also implicitly requiring that one uses `envoy` alongside it.
-by [@agrism](https://github.com/agrism/)!  
+# [gRPC-web](https://github.com/grpc/grpc-web) *without* `envoy`!  
+This project allows for the use of Google's `gRPC-web` `npm` package without implicitly requiring that one also use `envoy` alongside it.   
 
-<sub><i>and `README.md` updated by [@zod](https://github.com/zudsniper/)</i></sub>  
+[![author  - agrism](https://img.shields.io/badge/author_-agrism-2ea44f?logo=github&logoColor=%23ffffff&style=plastic)](https://github.com/agrism)  
 
 ## PREREQUISITES
-_Standalone CLI tools for the most part._
-- `golang` 
-- `node / npm`
+_Standalone CLI tools for the most part._  
+![Golang](https://img.shields.io/badge/GoLang-00ADD8?style=for-the-badge&logo=go&logoColor=white)
+![npm - nodejs](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 
 > As for your package manager, obviously this all depends on OS.  
 > **for Mac developers**, just use `Homebrew` for everything.  
 > **for Linux devs**, you can easily use `apt` & `npm` together to get all necessary CLI tools and packages.  
 > **for Windows devs**    
-> ...just admit `batch` and `PowerShell` are doo-doo and install WSL2  
+> <sup>...just admit `batch` and `PowerShell` are doo-doo and install WSL2</sup>  
 
 # `GETTING STARTED`
 This is the barebones installation process which I went through to configure my application environment correctly. 
@@ -32,21 +31,20 @@ This is the barebones installation process which I went through to configure my 
 - `$ npm install google-protobuf -g`
 - `$ npm install grpc-web -g`
 
----
-
-## **2.** Install Requird `Go` Packages
+## **2.** Install Required `Go` Packages
 - `$ go get -u google.golang.org/grpc`
 - `$ go get -u github.com/golang/protobuf/protoc-gen-go`
-
----
 
 ## **3.** Generate `protobuf`
 - `$ protoc -I proto proto/*.proto --proto_path=./proto --go_out=plugins=grpc:./backend/proto`  
 - `$ protoc -I proto proto/*.proto --js_out=import_style=commonjs:./frontend/proto --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./frontend/proto`  
 
----
+---  
+
+<br>  
 
 # `DEPLOYMENT`
+here we discuss how to deploy the webserver [frontend](#frontend) via `npm`, as well as the `Golang` based [backend](#backend). 
 
 ## FRONTEND
 _required `npm` packages & minimum versions_
@@ -63,8 +61,6 @@ $ npm install
 $ npm run dev
 ```
 
----
-
 ## BACKEND
 _Backend setup is very easy, but somewhat limited in functionality at the moment._
 
@@ -73,7 +69,6 @@ $ cd backend
 $ go run server.go
 ```
 
----
-> `README.md` UPDATED BY  
-[![spooky.tf](https://user-images.githubusercontent.com/16076573/192673098-48467c36-2d96-43ca-bc02-5ec993989ceb.gif)](https://spooky.tf/)  
-**Jason** at *spooky.tf*  
+---  
+[![author  - agrism](https://img.shields.io/badge/author_-agrism-2ea44f?logo=github&logoColor=%23ffffff&style=plastic)](https://github.com/agrism)
+[![README  - zudsniper](https://img.shields.io/badge/README.md_-zudsniper-abdab8?logo=github&logoColor=%23ffffff&style=plastic)](https://github.com/zudsniper)
